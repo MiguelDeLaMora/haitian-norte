@@ -7,3 +7,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+// Este es el footer del site//
