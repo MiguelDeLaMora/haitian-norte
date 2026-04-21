@@ -1,91 +1,63 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Poppins } from "next/font/google";
 import "./globals.css";
- 
-// ─── Font ────────────────────────────────────────────────────────────────────
-// Cambia Inter por la fuente del proyecto.
-// Asegúrate de que el nombre coincida con el definido en tailwind.config.js
-const inter = Inter({
+
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
- 
-// ─── Metadata ────────────────────────────────────────────────────────────────
-// Actualiza estos valores al iniciar cada proyecto nuevo.
-// NEXT_PUBLIC_SITE_URL debe estar definido en .env.local
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tudominio.com";
- 
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://haitiannorte.mx";
+
 export const metadata: Metadata = {
-  // Title: las páginas hijas usan el template automáticamente.
-  // Ejemplo: la página "Nosotros" aparece como "Nosotros | Nombre del Proyecto"
   title: {
-    default: "Nombre del Proyecto",
-    template: "%s | Nombre del Proyecto",
+    default: "Haitian Norte — Maquinaria CNC | Financiamiento Directo",
+    template: "%s | Haitian Norte",
   },
-  description: "Descripción del proyecto. Máximo 160 caracteres para SEO.",
+  description:
+    "Centros de maquinado y tornos CNC con financiamiento directo. 24 MSI, 15% de enganche, aprobación en 48 horas. Soporte técnico en Guadalajara, Jalisco.",
   metadataBase: new URL(siteUrl),
- 
-  // Open Graph — redes sociales (Facebook, LinkedIn, WhatsApp)
   openGraph: {
-    title: "Nombre del Proyecto",
-    description: "Descripción del proyecto.",
+    title: "Haitian Norte — Maquinaria CNC | Financiamiento Directo",
+    description:
+      "Centros de maquinado y tornos CNC con financiamiento directo. 24 MSI, 15% enganche, aprobación en 48 horas.",
     url: siteUrl,
-    siteName: "Nombre del Proyecto",
+    siteName: "Haitian Norte",
     locale: "es_MX",
     type: "website",
     images: [
       {
-        url: "/og-image.png", // 1200x630px — agregar a /public
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Nombre del Proyecto",
+        alt: "Haitian Norte — Maquinaria CNC",
       },
     ],
   },
- 
-  // Twitter / X
   twitter: {
     card: "summary_large_image",
-    title: "Nombre del Proyecto",
-    description: "Descripción del proyecto.",
+    title: "Haitian Norte — Maquinaria CNC | Financiamiento Directo",
+    description:
+      "Centros de maquinado y tornos CNC con financiamiento directo.",
     images: ["/og-image.png"],
-    // creator: "@tuhandle", // descomentar si aplica
   },
- 
-  // Robots — índexable por defecto, se puede sobreescribir por página
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
- 
-  // Favicon e íconos — agregar archivos a /public/icons
-  icons: {
-    icon: "/icons/favicon.ico",
-    shortcut: "/icons/favicon-32x32.png",
-    apple: "/icons/apple-touch-icon.png",
+    googleBot: { index: true, follow: true },
   },
 };
- 
-// ─── Layout ──────────────────────────────────────────────────────────────────
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="font-sans antialiased bg-white text-primary">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+    <html lang="es" className={poppins.variable}>
+      <body className="font-sans antialiased bg-white">{children}</body>
     </html>
   );
 }
