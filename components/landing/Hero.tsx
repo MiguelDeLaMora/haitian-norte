@@ -40,21 +40,12 @@ export default function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 w-full max-w-[1280px] mx-auto px-8 py-20 grid gap-16 items-center"
+        className="relative z-10 w-full max-w-[1280px] mx-auto px-0 py-20 grid gap-16 items-center"
         style={{ gridTemplateColumns: "1fr 420px" }}
       >
         {/* Left: copy */}
         <div>
-          <Image
-            src="/logo-white.webp"
-            alt="Haitian Norte"
-            width={0}
-            height={0}
-            sizes="200px"
-            className="object-contain mb-10"
-            style={{ height: 52, width: "auto" }}
-            priority
-          />
+          
 
           <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange mb-4">
             Maquinaria CNC Industrial
@@ -71,7 +62,7 @@ export default function Hero() {
             Directo
           </h1>
 
-          <p className="text-[17px] text-white/72 leading-[1.7] max-w-[500px] mb-10">
+          <p className="text-[17px] text-white leading-[1.7] max-w-[500px] mb-10">
             Centros de maquinado y tornos CNC fabricados en México, respaldados
             por la tecnología global del Grupo Haitian. Ingeniería de precisión
             al alcance de su empresa.

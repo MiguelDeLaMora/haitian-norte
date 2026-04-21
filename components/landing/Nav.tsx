@@ -46,7 +46,7 @@ export default function Nav({ onContact }: NavProps) {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[12px] font-semibold text-white/82 no-underline tracking-[0.03em] hover:text-white transition-colors duration-150"
+                className="text-[12px] font-semibold text-white no-underline tracking-[0.03em] hover:text-brand-orange transition-colors duration-150"
               >
                 {item}
               </a>
