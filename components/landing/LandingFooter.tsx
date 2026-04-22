@@ -20,7 +20,7 @@ export default function LandingFooter() {
             style={{ height: 40, width: "auto" }}
           />
           <div className="text-right text-[12px] text-white/40">
-            <p>Guadalajara, Jalisco, México</p>
+            <p>Monterrey, Nuevo León, México</p>
             <p className="mt-1">
               Parte del Haitian Group — Tecnología global, fabricación local
             </p>

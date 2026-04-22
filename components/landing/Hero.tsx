@@ -11,13 +11,22 @@ const BENEFIT_PILLS = [
 
 export default function Hero() {
   return (
-    <section
-      className="relative min-h-screen flex items-stretch overflow-hidden"
-      style={{ background: "#203285" }}
-    >
+    <section className="relative min-h-screen flex items-stretch overflow-hidden">
+      {/* Background photo */}
+      <Image
+        src="/Hero-image-haitian.webp"
+        alt=""
+        fill
+        className="object-cover object-center"
+        priority
+      />
+
+      {/* Blue overlay */}
+      <div className="absolute inset-0 bg-brand-blue/88 pointer-events-none" />
+
       {/* Grid overlay */}
       <svg
-        className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none"
+        className="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -33,20 +42,18 @@ export default function Hero() {
         className="absolute bottom-0 right-0 h-full pointer-events-none"
         style={{
           width: "55%",
-          background: "rgba(255,108,0,0.08)",
+          background: "rgba(255,108,0,0.07)",
           clipPath: "polygon(30% 0, 100% 0, 100% 100%, 0% 100%)",
         }}
       />
 
       {/* Content */}
       <div
-        className="relative z-10 w-full max-w-[1280px] mx-auto px-0 py-20 grid gap-16 items-center"
+        className="relative z-10 w-full max-w-[1280px] mx-auto px-8 py-20 grid gap-16 items-center"
         style={{ gridTemplateColumns: "1fr 420px" }}
       >
         {/* Left: copy */}
         <div>
-          
-
           <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange mb-4">
             Maquinaria CNC Industrial
           </p>
@@ -62,7 +69,7 @@ export default function Hero() {
             Directo
           </h1>
 
-          <p className="text-[17px] text-white leading-[1.7] max-w-[500px] mb-10">
+          <p className="text-[17px] text-white/85 leading-[1.7] max-w-[500px] mb-10">
             Centros de maquinado y tornos CNC fabricados en México, respaldados
             por la tecnología global del Grupo Haitian. Ingeniería de precisión
             al alcance de su empresa.
@@ -89,7 +96,7 @@ export default function Hero() {
         </div>
 
         {/* Right: form */}
-        <div className="bg-white rounded-lg p-8 shadow-[0_24px_64px_rgba(0,0,0,0.3)]">
+        <div className="bg-white rounded-lg p-8 shadow-[0_24px_64px_rgba(0,0,0,0.4)]">
           <div className="mb-6">
             <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-orange mb-1.5">
               Solicitud Sin Costo

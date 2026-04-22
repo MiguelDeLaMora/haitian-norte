@@ -4,6 +4,7 @@ import { useState } from "react";
 import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
 import BenefitsStrip from "@/components/landing/BenefitsStrip";
+import GallerySection from "@/components/landing/GallerySection";
 import ProductsSection from "@/components/landing/ProductsSection";
 import FinancingSection from "@/components/landing/FinancingSection";
 import CertificationsSlider from "@/components/landing/CertificationsSlider";
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <Nav onContact={openModal} />
       <Hero />
       <BenefitsStrip />
+      <GallerySection />
       <ProductsSection onContact={openModal} />
       <FinancingSection onContact={openModal} />
       <CertificationsSlider />
