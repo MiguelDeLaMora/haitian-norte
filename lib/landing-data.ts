@@ -30,7 +30,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     id: "horizontal",
     label: "Centros de Maquinado Horizontales",
     shortLabel: "Horizontales",
-    tag: "HORIZONTAL",
+    tag: "CENTROS DE MAQUINADO HORIZONTALES",
     description:
       "Alta productividad para series largas en automotriz y fundición. Cambio automático de pallets y revólver de herramientas.",
     products: [
@@ -58,7 +58,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     id: "vertical",
     label: "Centros de Maquinado Verticales",
     shortLabel: "Verticales",
-    tag: "VERTICAL",
+    tag: "CENTROS DE MAQUINADOS VERTICALES",
     description:
       "Versatilidad y precisión para piezas medianas. Ideales para moldes, componentes aeroespaciales y automotrices.",
     products: [
@@ -95,7 +95,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     id: "doblecolumna",
     label: "Centros de Maquinado de Doble Columna",
     shortLabel: "Doble Columna",
-    tag: "DOBLE COLUMNA",
+    tag: "CENTROS DE MAQUINADO DE DOBLE COLUMNA",
     description:
       "Para piezas estructurales de gran formato. Rigidez máxima, alto torque y estabilidad térmica excepcional.",
     products: [

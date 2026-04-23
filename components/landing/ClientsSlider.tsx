@@ -8,11 +8,8 @@ export default function ClientsSlider() {
     <section id="clientes" className="bg-neutral-50 py-[72px]">
       <div className="max-w-[1280px] mx-auto px-8 mb-8 text-center">
         <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-neutral-400 mb-2">
-          Nuestros Clientes
+          Empresas que Confían en Haitian
         </p>
-        <h2 className="text-[28px] font-bold text-neutral-900 tracking-[-0.01em]">
-          Empresas que Confían en Haitian Norte
-        </h2>
       </div>
 
       <div className="overflow-hidden relative">
