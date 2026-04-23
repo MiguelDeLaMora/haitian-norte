@@ -1,24 +1,34 @@
+import Image from "next/image";
 import LeadForm from "@/components/ui/LeadForm";
 import { CONTACT_INFO } from "@/lib/landing-data";
 
 export default function CTASection() {
   return (
-    <section
-      className="relative py-24 px-8 overflow-hidden"
-      style={{ background: "#111827" }}
-    >
-      {/* Diagonal blue accent */}
+    <section className="relative py-16 sm:py-24 px-4 sm:px-8 overflow-hidden">
+      {/* Background image */}
+      <Image
+        src="/footer-image-haitian.webp"
+        alt=""
+        fill
+        className="object-cover object-center"
+      />
+
+      {/* Mobile overlay — uniform dark */}
       <div
-        className="absolute top-0 right-0 h-full opacity-50 pointer-events-none"
+        className="absolute inset-0 lg:hidden pointer-events-none"
+        style={{ background: "rgba(10,15,40,0.92)" }}
+      />
+      {/* Desktop overlay — gradient */}
+      <div
+        className="absolute inset-0 hidden lg:block pointer-events-none"
         style={{
-          width: "40%",
-          background: "#203285",
-          clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
+          background:
+            "linear-gradient(to right, rgba(10,15,40,0.94) 0%, rgba(10,15,40,0.88) 50%, rgba(10,15,40,0.75) 100%)",
         }}
       />
 
       <div className="relative z-10 max-w-[1280px] mx-auto">
-        <div className="grid gap-20 items-center" style={{ gridTemplateColumns: "1fr 480px" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 lg:gap-20 items-center">
           {/* Left: copy + contact info */}
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange mb-3">
@@ -26,18 +36,18 @@ export default function CTASection() {
             </p>
             <h2
               className="font-extrabold text-white leading-[1.15] tracking-[-0.02em] mb-5"
-              style={{ fontSize: "clamp(28px, 3vw, 44px)" }}
+              style={{ fontSize: "clamp(26px, 3vw, 44px)" }}
             >
               ¿Listo para escalar
               <br />
               <span className="text-brand-orange">su producción?</span>
             </h2>
-            <p className="text-[15px] text-white/65 leading-[1.75] mb-10 max-w-[440px]">
-              Nuestros ingenieros en Guadalajara analizarán su proceso y le
-              recomendarán el equipo ideal para su aplicación. Sin compromiso, sin costo.
+            <p className="text-[14px] sm:text-[15px] text-white/65 leading-[1.75] mb-8 sm:mb-10 max-w-[440px]">
+              Nuestros ingenieros analizarán su proceso y le recomendarán el
+              equipo ideal para su aplicación. Sin compromiso, sin costo.
             </p>
 
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-3 sm:gap-3.5">
               {CONTACT_INFO.map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div
@@ -64,12 +74,12 @@ export default function CTASection() {
           </div>
 
           {/* Right: form */}
-          <div className="bg-white rounded-lg p-9 shadow-[0_24px_64px_rgba(0,0,0,0.4)]">
-            <div className="mb-6">
+          <div className="bg-white rounded-lg p-6 sm:p-9 shadow-[0_24px_64px_rgba(0,0,0,0.5)]">
+            <div className="mb-5 sm:mb-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-orange mb-1.5">
                 Formulario de Contacto
               </p>
-              <h3 className="text-[20px] font-bold text-neutral-900">
+              <h3 className="text-[18px] sm:text-[20px] font-bold text-neutral-900">
                 Solicite Información Ahora
               </h3>
             </div>

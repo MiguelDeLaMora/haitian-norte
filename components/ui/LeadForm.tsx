@@ -76,7 +76,7 @@ export default function LeadForm({
 
   return (
     <form onSubmit={handleSubmit} className={className}>
-      <div className={cn("grid gap-3 mb-3", compact ? "grid-cols-1" : "grid-cols-2")}>
+      <div className={cn("grid gap-3 mb-3", compact ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2")}>
         <div>
           <label className={labelClass}>Nombre completo *</label>
           <input

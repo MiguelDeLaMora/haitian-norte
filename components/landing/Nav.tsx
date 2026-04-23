@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface NavProps {
   onContact: () => void;
@@ -20,12 +21,14 @@ export default function Nav({ onContact }: NavProps) {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-[250ms]"
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-[250ms] px-4 sm:px-8",
+        scrolled ? "py-3" : "py-4 sm:py-5"
+      )}
       style={{
         background: scrolled ? "rgba(32,50,133,0.97)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
-        padding: scrolled ? "14px 32px" : "20px 32px",
       }}
     >
       <div className="max-w-[1280px] mx-auto flex items-center justify-between">
@@ -36,11 +39,11 @@ export default function Nav({ onContact }: NavProps) {
           height={0}
           sizes="200px"
           className="object-contain transition-all duration-[250ms]"
-          style={{ height: scrolled ? 36 : 44, width: "auto" }}
+          style={{ height: scrolled ? 32 : 40, width: "auto" }}
           priority
         />
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 sm:gap-8">
           <div className="hidden md:flex gap-7">
             {NAV_LINKS.map((item) => (
               <a
@@ -55,7 +58,7 @@ export default function Nav({ onContact }: NavProps) {
 
           <button
             onClick={onContact}
-            className="bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-[12px] px-5 py-2.5 rounded cursor-pointer transition-all duration-150 hover:-translate-y-px"
+            className="bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-[11px] sm:text-[12px] px-4 sm:px-5 py-2 sm:py-2.5 rounded cursor-pointer transition-all duration-150 hover:-translate-y-px whitespace-nowrap"
           >
             Cotizar Ahora
           </button>
