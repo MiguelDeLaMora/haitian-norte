@@ -17,7 +17,7 @@ export default function LandingFooter() {
             height={0}
             sizes="160px"
             className="object-contain"
-            style={{ height: 36, width: "auto" }}
+            style={{ height: 70, width: "auto" }}
           />
           <div className="text-[12px] text-white/40 sm:text-right">
             <p>Monterrey, Nuevo León, México</p>

@@ -39,7 +39,7 @@ export default function Nav({ onContact }: NavProps) {
           height={0}
           sizes="200px"
           className="object-contain transition-all duration-[250ms]"
-          style={{ height: scrolled ? 32 : 40, width: "auto" }}
+          style={{ height: scrolled ? 50 : 60, width: "auto" }}
           priority
         />
 

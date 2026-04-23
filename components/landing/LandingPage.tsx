@@ -23,8 +23,8 @@ export default function LandingPage() {
       <Nav onContact={openModal} />
       <Hero />
       <BenefitsStrip />
-      <GallerySection />
       <ProductsSection onContact={openModal} />
+      <GallerySection />
       <FinancingSection onContact={openModal} />
       <CertificationsSlider />
       <ClientsSlider />
