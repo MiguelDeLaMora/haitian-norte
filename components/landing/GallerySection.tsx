@@ -21,7 +21,7 @@ const IMAGES = [
   },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 2500;
 
 export default function GallerySection() {
   const [current, setCurrent] = useState(0);
