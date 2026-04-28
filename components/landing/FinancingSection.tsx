@@ -16,12 +16,6 @@ const STATS = [
     detail: "Comienza a producir con la menor inversión inicial posible",
   },
   {
-    num: "48",
-    unit: "hrs",
-    desc: "Aprobación garantizada",
-    detail: "Proceso ágil sin burocracia — decisión en menos de 2 días hábiles",
-  },
-  {
     num: "3",
     unit: "meses",
     desc: "Período de gracia",
@@ -65,8 +59,8 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
               <span className="text-brand-orange">al alcance de tu empresa</span>
             </h2>
             <p className="text-[14px] sm:text-[15px] text-white/70 leading-[1.75] mb-8 max-w-[480px]">
-              Financiamiento 100% directo con Haitian Norte — sin bancos, sin
-              intermediarios. Aprobamos tu crédito en 48 horas y te damos hasta
+              Financiamiento 100% directo desde fábrica — sin bancos, sin
+              intermediarios. Aprobamos tu crédito con un sencillo formulario y te damos hasta
               3 meses de gracia para que generes retorno antes de iniciar tus pagos.
             </p>
             <button
@@ -77,8 +71,8 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
             </button>
           </div>
 
-          {/* Right: stats 2×2 grid */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {/* Right: stats 3×1 mobile/tablet, 1×3 desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
             {STATS.map((it, i) => (
               <div
                 key={i}

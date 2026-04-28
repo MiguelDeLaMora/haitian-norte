@@ -5,7 +5,6 @@ const BENEFIT_PILLS = [
   "24 MSI",
   "15% de Enganche",
   "3 Meses de Gracia",
-  "Aprobación en 48h",
   "Financiamiento Directo",
 ];
 

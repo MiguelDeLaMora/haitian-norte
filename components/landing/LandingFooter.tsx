@@ -22,7 +22,7 @@ export default function LandingFooter() {
           <div className="text-[12px] text-white/40 sm:text-right">
             <p>Monterrey, Nuevo León, México</p>
             <p className="mt-1">
-              Parte del Haitian Group — Tecnología global, fabricación local
+              Tecnología global, fabricación local
             </p>
           </div>
         </div>

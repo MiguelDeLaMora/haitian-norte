@@ -13,7 +13,7 @@ module.exports = {
         xl: "1280px",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
       },
       fontSize: {
         "h1": ["64px", { lineHeight: "1.1" }],
