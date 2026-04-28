@@ -9,7 +9,7 @@ interface ProductsSectionProps {
 }
 
 export default function ProductsSection({ onContact }: ProductsSectionProps) {
-  const [activeTab, setActiveTab] = useState("horizontal");
+  const [activeTab, setActiveTab] = useState("vertical");
   const cat = PRODUCT_CATEGORIES.find((c) => c.id === activeTab)!;
 
   const gridClass =
