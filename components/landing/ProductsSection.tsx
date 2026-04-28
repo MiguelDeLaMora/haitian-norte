@@ -33,7 +33,7 @@ export default function ProductsSection({ onContact }: ProductsSectionProps) {
           </h2>
           <p className="text-[14px] sm:text-[15px] text-neutral-500 max-w-[560px] mx-auto leading-[1.7]">
             Cuatro líneas especializadas para cubrir cada necesidad de su planta.
-            Todos los equipos con soporte técnico local en Guadalajara.
+            Todos los equipos con soporte técnico local en todo México.
           </p>
         </div>
 

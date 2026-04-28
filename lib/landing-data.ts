@@ -27,34 +27,6 @@ export interface Benefit {
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   {
-    id: "horizontal",
-    label: "Centros de Maquinado Horizontales",
-    shortLabel: "Horizontales",
-    tag: "CENTROS DE MAQUINADO HORIZONTALES",
-    description:
-      "Alta productividad para series largas en automotriz y fundición. Cambio automático de pallets y revólver de herramientas.",
-    products: [
-      {
-        name: "HMC-100HD",
-        src: "/HMC-100H.webp",
-        specs: [
-          { k: "Mesa pallets", v: "630×630 mm" },
-          { k: "Velocidad husillo", v: "12,000 rpm" },
-          { k: "Herramientas", v: "60 pos." },
-        ],
-      },
-      {
-        name: "HMC-80H",
-        src: "/HMC-80H.webp",
-        specs: [
-          { k: "Mesa pallets", v: "500×500 mm" },
-          { k: "Velocidad husillo", v: "10,000 rpm" },
-          { k: "Potencia", v: "30 kW" },
-        ],
-      },
-    ],
-  },
-  {
     id: "vertical",
     label: "Centros de Maquinado Verticales",
     shortLabel: "Verticales",
@@ -66,8 +38,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         name: "VMC 1300 II",
         src: "/VMC1300II.webp",
         specs: [
-          { k: "Mesa", v: "1,300×600 mm" },
-          { k: "Husillo", v: "12,000 rpm" },
+          { k: "Mesa", v: "1,400×650 mm" },
+          { k: "Husillo", v: "8,000 rpm" },
           { k: "Herramientas", v: "24 pos." },
         ],
       },
@@ -75,18 +47,18 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         name: "CFV-600",
         src: "/CFV600.webp",
         specs: [
-          { k: "Mesa", v: "600×400 mm" },
-          { k: "Husillo", v: "15,000 rpm" },
-          { k: "Precisión", v: "±0.003 mm" },
+          { k: "Mesa", v: "900×430 mm" },
+          { k: "Husillo", v: "12,000 rpm" },
+          { k: "Herramientas", v: "24 pos." },
         ],
       },
       {
         name: "CFV-900",
         src: "/CFV900.webp",
         specs: [
-          { k: "Mesa", v: "900×500 mm" },
-          { k: "Husillo", v: "15,000 rpm" },
-          { k: "Potencia", v: "22 kW" },
+          { k: "Mesa", v: "1100×430 mm" },
+          { k: "Husillo", v: "12,000 rpm" },
+          { k: "Herramientas", v: "24 pos." },
         ],
       },
     ],
@@ -103,27 +75,27 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         name: "GLU18X30",
         src: "/GLU18x30.webp",
         specs: [
-          { k: "Mesa", v: "3,000×1,800 mm" },
-          { k: "Husillo", v: "18,000 rpm" },
-          { k: "Potencia", v: "55 kW" },
+          { k: "Mesa", v: "3,000×1,500 mm" },
+          { k: "Velocidad", v: "6,000 rpm" },
+          { k: "Herramienas", v: "24 pos." },
         ],
       },
       {
         name: "GLUe 13x16",
         src: "/GLUe13x16.webp",
         specs: [
-          { k: "Mesa", v: "1,600×1,300 mm" },
-          { k: "Husillo", v: "15,000 rpm" },
-          { k: "Carrera Z", v: "800 mm" },
+          { k: "Mesa", v: "1,800×1,300 mm" },
+          { k: "Velocidad", v: "6,000 rpm" },
+          { k: "Herramienas", v: "24 pos." },
         ],
       },
       {
         name: "GLUe 16x20",
         src: "/GLUe16x20.webp",
         specs: [
-          { k: "Mesa", v: "2,000×1,600 mm" },
-          { k: "Husillo", v: "15,000 rpm" },
-          { k: "Control", v: "Siemens 840D" },
+          { k: "Mesa", v: "2,000×2,000 mm" },
+          { k: "Velocidad", v: "6,000 rpm" },
+          { k: "Herramienas", v: "Brazo" },
         ],
       },
     ],
@@ -140,31 +112,59 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         name: "TC30II×1000",
         src: "/TC30IIx1000.webp",
         specs: [
-          { k: "Volteo", v: "Ø 300 mm" },
-          { k: "Entre puntos", v: "1,000 mm" },
-          { k: "Velocidad", v: "4,500 rpm" },
+          { k: "Velocidad de husillo", v: "3,500 rpm" },
+          { k: "Diámetro máximo", v: "Ø 500 mm" },
+          { k: "Longitud máxima", v: "1,000 mm" },
         ],
       },
       {
         name: "TC30II×1500",
         src: "/TC30IIx1500.webp",
         specs: [
-          { k: "Volteo", v: "Ø 300 mm" },
-          { k: "Entre puntos", v: "1,500 mm" },
-          { k: "Velocidad", v: "4,500 rpm" },
+          { k: "Velocidad de husillo", v: "3,500 rpm" },
+          { k: "Diámetro máximo", v: "Ø 500 mm" },
+          { k: "Longitud máxima", v: "1,500 mm" },
         ],
       },
       {
         name: "TC35A×1500",
         src: "/TC35Ax1500.webp",
         specs: [
-          { k: "Volteo", v: "Ø 350 mm" },
-          { k: "Entre puntos", v: "1,500 mm" },
-          { k: "Potencia", v: "22 kW" },
+          { k: "Velocidad de husillo", v: "2,500 rpm" },
+          { k: "Diámetro máximo", v: "Ø 630 mm" },
+          { k: "Longitud máxima", v: "1,500 mm" },
         ],
       },
     ],
   },
+  {
+    id: "horizontal",
+    label: "Centros de Maquinado Horizontales",
+    shortLabel: "Horizontales",
+    tag: "CENTROS DE MAQUINADO HORIZONTALES",
+    description:
+      "Alta productividad para series largas en automotriz y fundición. Cambio automático de pallets y revólver de herramientas.",
+    products: [
+      {
+        name: "HMC-100HD",
+        src: "/HMC-100H.webp",
+        specs: [
+          { k: "Mesa pallets", v: "1000×1000 mm" },
+          { k: "Velocidad husillo", v: "4,500 rpm" },
+          { k: "Herramientas", v: "40 pos." },
+        ],
+      },
+      {
+        name: "HMC-80H",
+        src: "/HMC-80H.webp",
+        specs: [
+          { k: "Mesa pallets", v: "800×800 mm" },
+          { k: "Velocidad husillo", v: "4,500 rpm" },
+          { k: "Herramientas", v: "65 pos." },
+        ],
+      },
+    ],
+  }
 ];
 
 export const BENEFITS: Benefit[] = [
