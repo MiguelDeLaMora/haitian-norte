@@ -12,6 +12,7 @@ import ClientsSlider from "@/components/landing/ClientsSlider";
 import CTASection from "@/components/landing/CTASection";
 import LandingFooter from "@/components/landing/LandingFooter";
 import ContactModal from "@/components/ui/ContactModal";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,6 +32,7 @@ export default function LandingPage() {
       <CTASection />
       <LandingFooter />
       <ContactModal open={modalOpen} onClose={closeModal} />
+      <WhatsAppButton />
     </>
   );
 }
