@@ -37,13 +37,36 @@ export default function LeadForm({
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((p) => ({ ...p, [k]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "ventas@haitiancncnorte.mx",
+          subject: `Nueva solicitud de cotización — ${form.nombre}`,
+          html: `
+            <h2 style="color:#E85D04;">Nueva solicitud de información</h2>
+            <table cellpadding="6" style="font-family:sans-serif;font-size:14px;">
+              <tr><td><strong>Nombre:</strong></td><td>${form.nombre}</td></tr>
+              <tr><td><strong>Empresa:</strong></td><td>${form.empresa}</td></tr>
+              <tr><td><strong>Teléfono:</strong></td><td>${form.telefono}</td></tr>
+              <tr><td><strong>Email:</strong></td><td>${form.email}</td></tr>
+              <tr><td><strong>Categoría:</strong></td><td>${form.categoria || "No especificada"}</td></tr>
+              ${form.mensaje ? `<tr><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>` : ""}
+            </table>
+          `,
+        }),
+      });
+      if (!res.ok) throw new Error("Error al enviar");
       setSent(true);
-    }, 1200);
+    } catch {
+      alert("Ocurrió un error al enviar. Por favor intente de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass = cn(
