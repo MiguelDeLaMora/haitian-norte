@@ -45,7 +45,7 @@ export default function LeadForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "ventas@haitiancncnorte.mx",
+          to: "miguel@humanmarketing.mx",
           subject: `Nueva solicitud de cotización — ${form.nombre}`,
           html: `
             <h2 style="color:#E85D04;">Nueva solicitud de información</h2>
@@ -60,10 +60,13 @@ export default function LeadForm({
           `,
         }),
       });
-      if (!res.ok) throw new Error("Error al enviar");
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Error al enviar");
+      }
       setSent(true);
-    } catch {
-      alert("Ocurrió un error al enviar. Por favor intente de nuevo.");
+    } catch (err) {
+      alert(`Error: ${err instanceof Error ? err.message : "Intente de nuevo"}`);
     } finally {
       setLoading(false);
     }

@@ -14,7 +14,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error('Error enviando email:', error);
-    return NextResponse.json({ error: 'Error al enviar email' }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error('Error enviando email:', msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
