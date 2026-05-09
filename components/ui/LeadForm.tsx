@@ -47,7 +47,7 @@ export default function LeadForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "miguel@humanmarketing.mx",
+          to: "ventas@haitiancncnorte.mx",
           subject: `Nueva solicitud de cotización — ${form.nombre}`,
           html: `
             <h2 style="color:#E85D04;">Nueva solicitud de información</h2>
