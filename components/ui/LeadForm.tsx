@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Turnstile } from "@marsidev/react-turnstile";
 import { cn } from "@/lib/utils";
 
 interface FormState {
@@ -34,8 +33,6 @@ export default function LeadForm({
   });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((p) => ({ ...p, [k]: e.target.value }));
 
@@ -60,7 +57,6 @@ export default function LeadForm({
               ${form.mensaje ? `<tr><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>` : ""}
             </table>
           `,
-          turnstileToken,
         }),
       });
       if (!res.ok) {
@@ -176,15 +172,9 @@ export default function LeadForm({
         </div>
       )}
 
-      <Turnstile
-        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-        onSuccess={(token) => setTurnstileToken(token)}
-        className="mb-3"
-      />
-
       <button
         type="submit"
-        disabled={loading || !turnstileToken}
+        disabled={loading}
         className="w-full bg-brand-orange hover:bg-brand-orange-dark active:bg-[#c95500] text-white font-bold text-[14px] py-3.5 rounded cursor-pointer transition-all duration-150 hover:-translate-y-px disabled:opacity-80"
       >
         {loading ? "Enviando..." : "Solicitar Información Gratuita"}
