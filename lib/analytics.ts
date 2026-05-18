@@ -1,3 +1,5 @@
+import { getStoredCampaignParams } from "./campaign";
+
 declare global {
   interface Window {
     dataLayer: any[];
@@ -29,9 +31,12 @@ export const trackLead = (data: {
   const firstName = nameParts[0] || "";
   const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
 
+  const campaignParams = getStoredCampaignParams();
+
   pushToDataLayer("generate_lead", {
     form_id: "lead_form_cnc",
     category: data.category || "general",
+    ...campaignParams,
     user_data: {
       email_address: cleanEmail,
       phone_number: cleanPhone,

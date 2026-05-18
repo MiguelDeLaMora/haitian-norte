@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { cn } from "@/lib/utils";
 import { trackLead } from "@/lib/analytics";
+import { getStoredCampaignParams } from "@/lib/campaign";
 
 interface FormState {
   nombre: string;
@@ -44,6 +45,8 @@ export default function LeadForm({
     e.preventDefault();
     setLoading(true);
     try {
+      const campaign = getStoredCampaignParams();
+      
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,14 +55,26 @@ export default function LeadForm({
           subject: `Nueva solicitud de cotización — ${form.nombre}`,
           html: `
             <h2 style="color:#E85D04;">Nueva solicitud de información</h2>
-            <table cellpadding="6" style="font-family:sans-serif;font-size:14px;">
-              <tr><td><strong>Nombre:</strong></td><td>${form.nombre}</td></tr>
-              <tr><td><strong>Empresa:</strong></td><td>${form.empresa}</td></tr>
-              <tr><td><strong>Teléfono:</strong></td><td>${form.telefono}</td></tr>
-              <tr><td><strong>Email:</strong></td><td>${form.email}</td></tr>
-              <tr><td><strong>Categoría:</strong></td><td>${form.categoria || "No especificada"}</td></tr>
-              ${form.mensaje ? `<tr><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>` : ""}
+            <table cellpadding="6" style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%;max-width:600px;">
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Nombre:</strong></td><td>${form.nombre}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Empresa:</strong></td><td>${form.empresa}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Teléfono:</strong></td><td>${form.telefono}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Email:</strong></td><td>${form.email}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Categoría:</strong></td><td>${form.categoria || "No especificada"}</td></tr>
+              ${form.mensaje ? `<tr style="border-bottom:1px solid #eee;"><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>` : ""}
             </table>
+
+            ${Object.keys(campaign).length > 0 ? `
+              <h3 style="color:#203285;margin-top:24px;margin-bottom:8px;">Datos de Atribución y Campaña</h3>
+              <table cellpadding="6" style="font-family:sans-serif;font-size:12px;border-collapse:collapse;width:100%;max-width:600px;background:#f9f9f9;border:1px solid #eee;">
+                ${Object.entries(campaign).map(([key, val]) => `
+                  <tr style="border-bottom:1px solid #eee;">
+                    <td style="width:150px;color:#666;"><strong>${key}:</strong></td>
+                    <td style="word-break:break-all;">${val}</td>
+                  </tr>
+                `).join("")}
+              </table>
+            ` : ""}
           `,
           turnstileToken,
         }),

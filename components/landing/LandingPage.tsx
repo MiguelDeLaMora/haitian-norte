@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Nav from "@/components/landing/Nav";
 import Hero from "@/components/landing/Hero";
 import BenefitsStrip from "@/components/landing/BenefitsStrip";
@@ -13,11 +13,16 @@ import CTASection from "@/components/landing/CTASection";
 import LandingFooter from "@/components/landing/LandingFooter";
 import ContactModal from "@/components/ui/ContactModal";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { captureCampaignParams } from "@/lib/campaign";
 
 export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+
+  useEffect(() => {
+    captureCampaignParams();
+  }, []);
 
   return (
     <>
