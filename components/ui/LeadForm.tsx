@@ -77,6 +77,15 @@ export default function LeadForm({
             ` : ""}
           `,
           turnstileToken,
+          leadData: {
+            nombre: form.nombre,
+            empresa: form.empresa,
+            telefono: form.telefono,
+            email: form.email,
+            categoria: form.categoria,
+            mensaje: form.mensaje,
+          },
+          campaign,
         }),
       });
       if (!res.ok) {
