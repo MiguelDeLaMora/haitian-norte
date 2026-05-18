@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { cn } from "@/lib/utils";
+import { trackLead } from "@/lib/analytics";
 
 interface FormState {
   nombre: string;
@@ -67,6 +68,12 @@ export default function LeadForm({
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || "Error al enviar");
       }
+      trackLead({
+        email: form.email,
+        phone: form.telefono,
+        name: form.nombre,
+        category: form.categoria,
+      });
       setSent(true);
     } catch (err) {
       alert(`Error: ${err instanceof Error ? err.message : "Intente de nuevo"}`);
