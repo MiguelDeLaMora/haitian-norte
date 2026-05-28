@@ -5,7 +5,7 @@ export default function BenefitsStrip() {
     <section className="bg-brand-orange">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8">
         {/* Mobile/tablet: 2-col grid with gap-px dividers */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/20">
+        <div className="grid grid-cols-3 gap-px bg-white/20">
           {BENEFITS.map((b, i) => (
             <div
               key={i}

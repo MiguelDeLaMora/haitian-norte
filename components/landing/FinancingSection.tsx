@@ -15,12 +15,6 @@ const STATS = [
     desc: "Enganche mínimo",
     detail: "Comienza a producir con la menor inversión inicial posible",
   },
-  {
-    num: "3",
-    unit: "meses",
-    desc: "Período de gracia",
-    detail: "Produce y genera retorno antes de iniciar tus pagos",
-  },
 ];
 
 export default function FinancingSection({ onContact }: FinancingSectionProps) {
@@ -60,8 +54,7 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
             </h2>
             <p className="text-[14px] sm:text-[15px] text-white/70 leading-[1.75] mb-8 max-w-[480px]">
               Financiamiento 100% directo desde fábrica — sin bancos, sin
-              intermediarios. Aprobamos tu crédito con un sencillo formulario y te damos hasta
-              3 meses de gracia para que generes retorno antes de iniciar tus pagos.
+              intermediarios. Aprobamos tu crédito con un sencillo formulario.
             </p>
             <button
               onClick={onContact}
@@ -72,7 +65,7 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
           </div>
 
           {/* Right: stats 3×1 mobile/tablet, 1×3 desktop */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
             {STATS.map((it, i) => (
               <div
                 key={i}

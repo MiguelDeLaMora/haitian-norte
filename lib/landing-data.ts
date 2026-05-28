@@ -181,12 +181,6 @@ export const BENEFITS: Benefit[] = [
     desc: "Comienza a producir con solo el 15% de enganche",
   },
   {
-    icon: "3",
-    iconSub: "meses",
-    label: "De Gracia",
-    desc: "Hasta 3 meses de gracia para empezar a pagar",
-  },
-  {
     icon: "$",
     iconSub: "",
     label: "Financiamiento Directo",
