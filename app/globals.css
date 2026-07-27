@@ -83,3 +83,71 @@ body {
 .lead-input-dark:focus {
   border-color: rgba(255, 255, 255, 0.5);
 }
+
+/* Páginas legales (aviso de privacidad) */
+.legal {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.legal h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.legal p {
+  margin-bottom: 1rem;
+}
+
+.legal ul {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.legal li {
+  position: relative;
+  padding-left: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.legal li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #FF6C00;
+}
+
+.legal strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.legal a {
+  color: #203285;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal a:hover {
+  color: #FF6C00;
+}

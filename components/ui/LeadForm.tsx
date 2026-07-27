@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { cn } from "@/lib/utils";
 import { trackLead } from "@/lib/analytics";
@@ -225,7 +226,16 @@ export default function LeadForm({
       </button>
 
       <p className={cn("text-[10px] text-center mt-2.5 leading-relaxed", dark ? "text-white/40" : "text-neutral-400")}>
-        Al enviar, acepta que un asesor de Haitian Norte se comunique con usted.
+        Al enviar, acepta que un asesor de Haitian Norte se comunique con usted y
+        acepta nuestro{" "}
+        <Link
+          href="/privacidad"
+          target="_blank"
+          className={cn("underline", dark ? "text-white/60" : "text-neutral-500")}
+        >
+          aviso de privacidad
+        </Link>
+        .
       </p>
     </form>
   );

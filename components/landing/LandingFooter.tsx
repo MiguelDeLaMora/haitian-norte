@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const SECTORS = ["Automotriz", "Aeroespacial", "Moldes y Troqueles"];
 
@@ -14,6 +15,12 @@ export default function LandingFooter({ minimal = false }: LandingFooterProps) {
         <div className="max-w-[1280px] mx-auto">
           <p className="text-[10px] text-white/15 text-center leading-relaxed">
             Distribuidor Autorizado Haitian — operado por MTE Global Solutions
+          </p>
+          {/* Requerido por las políticas de Google Ads y Meta para tráfico pagado. */}
+          <p className="text-[10px] text-center mt-1.5">
+            <Link href="/privacidad" className="text-white/25 hover:text-white/50 transition-colors">
+              Aviso de privacidad
+            </Link>
           </p>
         </div>
       </footer>
@@ -46,7 +53,10 @@ export default function LandingFooter({ minimal = false }: LandingFooterProps) {
 
         <div className="pt-5 sm:pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-[11px] text-white/30">
-            © 2026 Haitian Norte. Todos los derechos reservados.
+            © 2026 Haitian Norte. Todos los derechos reservados.{" "}
+            <Link href="/privacidad" className="text-white/45 hover:text-white/70 transition-colors underline">
+              Aviso de privacidad
+            </Link>
           </p>
           <div className="flex flex-wrap gap-2">
             {SECTORS.map((s) => (
