@@ -2,7 +2,24 @@ import Image from "next/image";
 
 const SECTORS = ["Automotriz", "Aeroespacial", "Moldes y Troqueles"];
 
-export default function LandingFooter() {
+interface LandingFooterProps {
+  /** Footer reducido a la línea de distribuidor (landings dedicadas de campaña). */
+  minimal?: boolean;
+}
+
+export default function LandingFooter({ minimal = false }: LandingFooterProps) {
+  if (minimal) {
+    return (
+      <footer className="bg-brand-blue-navy px-4 sm:px-8 py-6">
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[10px] text-white/15 text-center leading-relaxed">
+            Distribuidor Autorizado Haitian — operado por MTE Global Solutions
+          </p>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="bg-brand-blue-navy px-4 sm:px-8 pt-10 sm:pt-12 pb-8">
       <div className="max-w-[1280px] mx-auto">

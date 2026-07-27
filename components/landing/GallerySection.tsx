@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { HOME_VARIANT, type LandingVariant } from "@/lib/landing-variants";
 
 const IMAGES = [
   {
@@ -23,7 +24,13 @@ const IMAGES = [
 
 const INTERVAL = 2500;
 
-export default function GallerySection() {
+interface GallerySectionProps {
+  content?: LandingVariant["gallery"];
+}
+
+export default function GallerySection({
+  content = HOME_VARIANT.gallery,
+}: GallerySectionProps) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -52,9 +59,9 @@ export default function GallerySection() {
               className="font-extrabold text-white tracking-[-0.02em] leading-tight"
               style={{ fontSize: "clamp(24px, 2.5vw, 36px)" }}
             >
-              Maquinaria que produce,
+              {content.titleTop}
               <br />
-              <span className="text-brand-orange">día tras día</span>
+              <span className="text-brand-orange">{content.titleAccent}</span>
             </h2>
           </div>
           <p className="hidden md:block text-[13px] text-white/45 max-w-[320px] sm:text-right leading-relaxed">

@@ -6,11 +6,13 @@ import { cn } from "@/lib/utils";
 
 interface NavProps {
   onContact: () => void;
+  /** Oculta los links de navegación (landings dedicadas de campaña). */
+  minimal?: boolean;
 }
 
 const NAV_LINKS = ["Productos", "Financiamiento", "Certificaciones", "Clientes"];
 
-export default function Nav({ onContact }: NavProps) {
+export default function Nav({ onContact, minimal = false }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -44,17 +46,19 @@ export default function Nav({ onContact }: NavProps) {
         />
 
         <div className="flex items-center gap-4 sm:gap-8">
-          <div className="hidden md:flex gap-7">
-            {NAV_LINKS.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-[12px] font-semibold text-white no-underline tracking-[0.03em] hover:text-brand-orange transition-colors duration-150"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+          {!minimal && (
+            <div className="hidden md:flex gap-7">
+              {NAV_LINKS.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-[12px] font-semibold text-white no-underline tracking-[0.03em] hover:text-brand-orange transition-colors duration-150"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          )}
 
           <button
             onClick={onContact}

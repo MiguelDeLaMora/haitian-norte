@@ -1,23 +1,29 @@
+import { HOME_VARIANT, type LandingVariant } from "@/lib/landing-variants";
+
 interface FinancingSectionProps {
   onContact: () => void;
+  content?: LandingVariant["financing"];
 }
 
-const STATS = [
-  {
-    num: "24",
-    unit: "MSI",
-    desc: "Meses sin intereses",
-    detail: "El plazo más largo del mercado para maquinaria CNC industrial",
-  },
-  {
-    num: "15%",
-    unit: "",
-    desc: "Enganche mínimo",
-    detail: "Comienza a producir con la menor inversión inicial posible",
-  },
-];
+export default function FinancingSection({
+  onContact,
+  content = HOME_VARIANT.financing,
+}: FinancingSectionProps) {
+  const stats = [
+    {
+      num: "24",
+      unit: "MSI",
+      desc: "Meses sin intereses",
+      detail: content.statDetail,
+    },
+    {
+      num: "15%",
+      unit: "",
+      desc: "Enganche mínimo",
+      detail: "Comienza a producir con la menor inversión inicial posible",
+    },
+  ];
 
-export default function FinancingSection({ onContact }: FinancingSectionProps) {
   return (
     <section
       id="financiamiento"
@@ -48,9 +54,9 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
               className="font-extrabold text-white leading-[1.15] tracking-[-0.02em] mb-5"
               style={{ fontSize: "clamp(26px, 3vw, 42px)" }}
             >
-              Tu maquinaria CNC
+              {content.titleTop}
               <br />
-              <span className="text-brand-orange">al alcance de tu empresa</span>
+              <span className="text-brand-orange">{content.titleAccent}</span>
             </h2>
             <p className="text-[14px] sm:text-[15px] text-white/70 leading-[1.75] mb-8 max-w-[480px]">
               Financiamiento 100% directo desde fábrica — sin bancos, sin
@@ -66,7 +72,7 @@ export default function FinancingSection({ onContact }: FinancingSectionProps) {
 
           {/* Right: stats 3×1 mobile/tablet, 1×3 desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-            {STATS.map((it, i) => (
+            {stats.map((it, i) => (
               <div
                 key={i}
                 className="rounded p-5 sm:p-7"

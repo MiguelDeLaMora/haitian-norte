@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LeadForm from "@/components/ui/LeadForm";
+import { HOME_VARIANT, type LandingVariant } from "@/lib/landing-variants";
 
 const BENEFIT_PILLS = [
   "24 MSI",
@@ -7,7 +8,15 @@ const BENEFIT_PILLS = [
   "Financiamiento Directo",
 ];
 
-export default function Hero() {
+interface HeroProps {
+  content?: LandingVariant["hero"];
+  formCategories?: string[];
+}
+
+export default function Hero({
+  content = HOME_VARIANT.hero,
+  formCategories,
+}: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-stretch overflow-hidden px-4 sm:px-8">
       {/* Background photo */}
@@ -66,24 +75,22 @@ export default function Hero() {
         {/* Left: copy */}
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-orange mb-3 sm:mb-4">
-            Maquinaria CNC Industrial
+            {content.eyebrow}
           </p>
 
           <h1
             className="font-extrabold text-white leading-[1.1] tracking-[-0.02em] mb-4 sm:mb-5"
             style={{ fontSize: "clamp(32px, 5vw, 58px)" }}
           >
-            Maquinaria CNC
+            {content.titleTop}
             <br />
-            <span className="text-brand-orange">con Financiamiento</span>
+            <span className="text-brand-orange">{content.titleAccent}</span>
             <br />
-            Directo
+            {content.titleBottom}
           </h1>
 
           <p className="text-[15px] sm:text-[17px] text-white/85 leading-[1.7] max-w-[500px] mb-8 sm:mb-10">
-            Centros de maquinado y tornos CNC fabricados en México, respaldados
-            por la tecnología global del Grupo Haitian. Ingeniería de precisión
-            al alcance de su empresa.
+            {content.description}
           </p>
 
           {/* Benefit pills */}
@@ -113,13 +120,13 @@ export default function Hero() {
               Solicitud Sin Costo
             </p>
             <h2 className="text-[18px] sm:text-[20px] font-bold text-neutral-900 leading-snug">
-              Cotice su Maquinaria CNC
+              {content.formTitle}
             </h2>
             <p className="text-[12px] text-neutral-500 mt-1">
               Un asesor lo contactará en menos de 48 horas.
             </p>
           </div>
-          <LeadForm compact />
+          <LeadForm compact categories={formCategories} />
         </div>
       </div>
     </section>

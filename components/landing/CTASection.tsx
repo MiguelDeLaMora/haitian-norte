@@ -2,7 +2,11 @@ import Image from "next/image";
 import LeadForm from "@/components/ui/LeadForm";
 import { CONTACT_INFO } from "@/lib/landing-data";
 
-export default function CTASection() {
+interface CTASectionProps {
+  formCategories?: string[];
+}
+
+export default function CTASection({ formCategories }: CTASectionProps) {
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-8 overflow-hidden">
       {/* Background image */}
@@ -83,7 +87,7 @@ export default function CTASection() {
                 Solicite Información Ahora
               </h3>
             </div>
-            <LeadForm />
+            <LeadForm categories={formCategories} />
           </div>
         </div>
       </div>

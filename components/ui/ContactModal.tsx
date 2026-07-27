@@ -6,9 +6,16 @@ import LeadForm from "@/components/ui/LeadForm";
 interface ContactModalProps {
   open: boolean;
   onClose: () => void;
+  title?: string;
+  categories?: string[];
 }
 
-export default function ContactModal({ open, onClose }: ContactModalProps) {
+export default function ContactModal({
+  open,
+  onClose,
+  title = "Cotice su Maquinaria CNC",
+  categories,
+}: ContactModalProps) {
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -32,9 +39,7 @@ export default function ContactModal({ open, onClose }: ContactModalProps) {
             <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-orange mb-1">
               Solicitud Sin Costo
             </p>
-            <p className="text-[17px] font-bold text-white">
-              Cotice su Maquinaria CNC
-            </p>
+            <p className="text-[17px] font-bold text-white">{title}</p>
           </div>
           <button
             onClick={onClose}
@@ -46,7 +51,7 @@ export default function ContactModal({ open, onClose }: ContactModalProps) {
 
         {/* Form */}
         <div className="p-7">
-          <LeadForm />
+          <LeadForm categories={categories} />
         </div>
       </div>
     </div>

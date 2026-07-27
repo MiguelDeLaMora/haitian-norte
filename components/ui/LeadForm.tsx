@@ -5,6 +5,7 @@ import { Turnstile } from "@marsidev/react-turnstile";
 import { cn } from "@/lib/utils";
 import { trackLead } from "@/lib/analytics";
 import { getStoredCampaignParams } from "@/lib/campaign";
+import { ALL_FORM_CATEGORIES } from "@/lib/landing-variants";
 
 interface FormState {
   nombre: string;
@@ -19,12 +20,15 @@ export interface LeadFormProps {
   dark?: boolean;
   compact?: boolean;
   className?: string;
+  /** Opciones del select "Categoría de interés". */
+  categories?: string[];
 }
 
 export default function LeadForm({
   dark = false,
   compact = false,
   className,
+  categories = ALL_FORM_CATEGORIES,
 }: LeadFormProps) {
   const [form, setForm] = useState<FormState>({
     nombre: "",
@@ -187,10 +191,9 @@ export default function LeadForm({
         <label className={labelClass}>Categoría de interés</label>
         <select className={inputClass} value={form.categoria} onChange={set("categoria")}>
           <option value="">Seleccionar categoría</option>
-          <option>Centros de Maquinado Horizontales</option>
-          <option>Centros de Maquinado Verticales</option>
-          <option>Centros de Maquinado de Doble Columna</option>
-          <option>Tornos CNC</option>
+          {categories.map((c) => (
+            <option key={c}>{c}</option>
+          ))}
         </select>
       </div>
 
