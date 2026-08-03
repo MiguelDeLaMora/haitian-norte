@@ -8,11 +8,49 @@ import { trackLead } from "@/lib/analytics";
 import { getStoredCampaignParams } from "@/lib/campaign";
 import { ALL_FORM_CATEGORIES } from "@/lib/landing-variants";
 
+/** Catálogo cerrado para que Brevo reciba un valor consistente y segmentable. */
+const ESTADOS = [
+  "Aguascalientes",
+  "Baja California",
+  "Baja California Sur",
+  "Campeche",
+  "Chiapas",
+  "Chihuahua",
+  "Ciudad de México",
+  "Coahuila",
+  "Colima",
+  "Durango",
+  "Estado de México",
+  "Guanajuato",
+  "Guerrero",
+  "Hidalgo",
+  "Jalisco",
+  "Michoacán",
+  "Morelos",
+  "Nayarit",
+  "Nuevo León",
+  "Oaxaca",
+  "Puebla",
+  "Querétaro",
+  "Quintana Roo",
+  "San Luis Potosí",
+  "Sinaloa",
+  "Sonora",
+  "Tabasco",
+  "Tamaulipas",
+  "Tlaxcala",
+  "Veracruz",
+  "Yucatán",
+  "Zacatecas",
+];
+
 interface FormState {
   nombre: string;
   empresa: string;
   telefono: string;
   email: string;
+  estado: string;
+  ciudad: string;
   categoria: string;
   mensaje: string;
 }
@@ -23,6 +61,12 @@ export interface LeadFormProps {
   className?: string;
   /** Opciones del select "Categoría de interés". */
   categories?: string[];
+  /**
+   * Cuando se define, el select no se muestra y se envía este valor. Sirve para
+   * landings de una sola línea de producto, donde preguntar la categoría es
+   * redundante pero el dato sigue haciendo falta para segmentar en Brevo.
+   */
+  fixedCategory?: string;
 }
 
 export default function LeadForm({
@@ -30,12 +74,15 @@ export default function LeadForm({
   compact = false,
   className,
   categories = ALL_FORM_CATEGORIES,
+  fixedCategory,
 }: LeadFormProps) {
   const [form, setForm] = useState<FormState>({
     nombre: "",
     empresa: "",
     telefono: "",
     email: "",
+    estado: "",
+    ciudad: "",
     categoria: "",
     mensaje: "",
   });
@@ -51,7 +98,8 @@ export default function LeadForm({
     setLoading(true);
     try {
       const campaign = getStoredCampaignParams();
-      
+      const categoria = fixedCategory ?? form.categoria;
+
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,8 +113,10 @@ export default function LeadForm({
               <tr style="border-bottom:1px solid #eee;"><td><strong>Empresa:</strong></td><td>${form.empresa}</td></tr>
               <tr style="border-bottom:1px solid #eee;"><td><strong>Teléfono:</strong></td><td>${form.telefono}</td></tr>
               <tr style="border-bottom:1px solid #eee;"><td><strong>Email:</strong></td><td>${form.email}</td></tr>
-              <tr style="border-bottom:1px solid #eee;"><td><strong>Categoría:</strong></td><td>${form.categoria || "No especificada"}</td></tr>
-              ${form.mensaje ? `<tr style="border-bottom:1px solid #eee;"><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>` : ""}
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Estado:</strong></td><td>${form.estado}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Ciudad:</strong></td><td>${form.ciudad}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Categoría:</strong></td><td>${categoria || "No especificada"}</td></tr>
+              <tr style="border-bottom:1px solid #eee;"><td><strong>Mensaje:</strong></td><td>${form.mensaje}</td></tr>
             </table>
 
             ${Object.keys(campaign).length > 0 ? `
@@ -87,7 +137,9 @@ export default function LeadForm({
             empresa: form.empresa,
             telefono: form.telefono,
             email: form.email,
-            categoria: form.categoria,
+            estado: form.estado,
+            ciudad: form.ciudad,
+            categoria,
             mensaje: form.mensaje,
           },
           campaign,
@@ -101,7 +153,7 @@ export default function LeadForm({
         email: form.email,
         phone: form.telefono,
         name: form.nombre,
-        category: form.categoria,
+        category: categoria,
       });
       setSent(true);
     } catch (err) {
@@ -188,28 +240,54 @@ export default function LeadForm({
         </div>
       </div>
 
-      <div className="mb-3">
-        <label className={labelClass}>Categoría de interés</label>
-        <select className={inputClass} value={form.categoria} onChange={set("categoria")}>
-          <option value="">Seleccionar categoría</option>
-          {categories.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-      </div>
-
-      {!compact && (
-        <div className="mb-4">
-          <label className={labelClass}>Mensaje (opcional)</label>
-          <textarea
-            className={cn(inputClass, "resize-y")}
-            rows={3}
-            placeholder="Describa su necesidad o el equipo de su interés..."
-            value={form.mensaje}
-            onChange={set("mensaje")}
+      {/* Estado y ciudad siempre en dos columnas: ambos campos son cortos y así
+          el formulario compacto del hero no crece de más. */}
+      <div className="grid grid-cols-2 gap-3 mb-3">
+        <div>
+          <label className={labelClass}>Estado *</label>
+          <select className={inputClass} value={form.estado} onChange={set("estado")} required>
+            <option value="">Seleccionar</option>
+            {ESTADOS.map((e) => (
+              <option key={e}>{e}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={labelClass}>Ciudad *</label>
+          <input
+            className={inputClass}
+            type="text"
+            placeholder="Monterrey"
+            value={form.ciudad}
+            onChange={set("ciudad")}
+            required
           />
         </div>
+      </div>
+
+      {!fixedCategory && (
+        <div className="mb-3">
+          <label className={labelClass}>Categoría de interés</label>
+          <select className={inputClass} value={form.categoria} onChange={set("categoria")}>
+            <option value="">Seleccionar categoría</option>
+            {categories.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+        </div>
       )}
+
+      <div className="mb-4">
+        <label className={labelClass}>Mensaje *</label>
+        <textarea
+          className={cn(inputClass, "resize-y")}
+          rows={compact ? 2 : 3}
+          placeholder="Describa su necesidad o el equipo de su interés..."
+          value={form.mensaje}
+          onChange={set("mensaje")}
+          required
+        />
+      </div>
 
       <Turnstile
         siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}

@@ -54,6 +54,8 @@ export async function POST(req: NextRequest) {
           EMPRESA: leadData.empresa || '',
           TELEFONO: cleanPhone,
           SMS: formattedSMS,
+          ESTADO: leadData.estado || '',
+          CIUDAD: leadData.ciudad || '',
           CATEGORIA: leadData.categoria || '',
           MENSAJE: leadData.mensaje || '',
         };

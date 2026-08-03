@@ -50,6 +50,11 @@ export interface LandingVariant {
   modalTitle: string;
   /** Opciones del select "Categoría de interés". */
   formCategories: string[];
+  /**
+   * Cuando se define, el select de categoría no se muestra y los leads se
+   * envían con este valor fijo. Para landings de una sola línea de producto.
+   */
+  formFixedCategory?: string;
   afterSales: AfterSalesContent | null;
 }
 
@@ -67,11 +72,11 @@ const AFTER_SALES_PILLARS: AfterSalesPillar[] = [
   },
   {
     title: "Refacciones en existencia",
-    desc: "Inventario local de las refacciones de mayor rotación [en nuestro almacén de Monterrey]. Sin esperar tres meses a que llegue una pieza del extranjero.",
+    desc: "[Inventario local] de las refacciones de mayor rotación. Sin esperar varios meses a que llegue una pieza del extranjero.",
   },
   {
     title: "Servicio técnico y mantenimiento",
-    desc: "Atención remota y visitas en sitio en toda la República. Tiempo de respuesta [de 24 a 48 horas] para paros de producción.",
+    desc: "Atención remota y visitas en sitio en toda la República. Tiempos de respuesta [menores a 24 horas].",
   },
 ];
 
@@ -117,7 +122,7 @@ export const MAQUINAS_CNC_VARIANT: LandingVariant = {
     titleAccent: "con Financiamiento",
     titleBottom: "Directo",
     description:
-      "Centros de maquinado CNC fabricados en México, respaldados por la tecnología global del Grupo Haitian. Ingeniería de precisión al alcance de su empresa.",
+      "Centros de maquinado CNC respaldados por la tecnología global del Grupo Haitian. Ingeniería de precisión al alcance de su empresa.",
     formTitle: "Cotice su Máquina CNC",
   },
   products: {
@@ -161,7 +166,7 @@ export const TORNOS_CNC_VARIANT: LandingVariant = {
     titleAccent: "con Financiamiento",
     titleBottom: "Directo",
     description:
-      "Tornos CNC fabricados en México, respaldados por la tecnología global del Grupo Haitian. Ingeniería de precisión al alcance de su empresa.",
+      "Tornos CNC respaldados por la tecnología global del Grupo Haitian. Ingeniería de precisión al alcance de su empresa.",
     formTitle: "Cotice su Torno CNC",
   },
   products: {
@@ -183,6 +188,7 @@ export const TORNOS_CNC_VARIANT: LandingVariant = {
   },
   modalTitle: "Cotice su Torno CNC",
   formCategories: ["Tornos CNC"],
+  formFixedCategory: "Tornos CNC",
   afterSales: {
     eyebrow: "Servicio Postventa",
     heading: "Compra la máquina. Se lleva el respaldo.",

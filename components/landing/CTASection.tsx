@@ -4,9 +4,10 @@ import { CONTACT_INFO } from "@/lib/landing-data";
 
 interface CTASectionProps {
   formCategories?: string[];
+  formFixedCategory?: string;
 }
 
-export default function CTASection({ formCategories }: CTASectionProps) {
+export default function CTASection({ formCategories, formFixedCategory }: CTASectionProps) {
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-8 overflow-hidden">
       {/* Background image */}
@@ -87,7 +88,7 @@ export default function CTASection({ formCategories }: CTASectionProps) {
                 Solicite Información Ahora
               </h3>
             </div>
-            <LeadForm categories={formCategories} />
+            <LeadForm categories={formCategories} fixedCategory={formFixedCategory} />
           </div>
         </div>
       </div>

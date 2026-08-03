@@ -11,11 +11,13 @@ const BENEFIT_PILLS = [
 interface HeroProps {
   content?: LandingVariant["hero"];
   formCategories?: string[];
+  formFixedCategory?: string;
 }
 
 export default function Hero({
   content = HOME_VARIANT.hero,
   formCategories,
+  formFixedCategory,
 }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-stretch overflow-hidden px-4 sm:px-8">
@@ -126,7 +128,7 @@ export default function Hero({
               Un asesor lo contactará en menos de 48 horas.
             </p>
           </div>
-          <LeadForm compact categories={formCategories} />
+          <LeadForm compact categories={formCategories} fixedCategory={formFixedCategory} />
         </div>
       </div>
     </section>

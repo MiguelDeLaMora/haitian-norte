@@ -33,7 +33,11 @@ export default function LandingPage({ variant = HOME_VARIANT }: LandingPageProps
   return (
     <>
       <Nav onContact={openModal} minimal={variant.minimalChrome} />
-      <Hero content={variant.hero} formCategories={variant.formCategories} />
+      <Hero
+        content={variant.hero}
+        formCategories={variant.formCategories}
+        formFixedCategory={variant.formFixedCategory}
+      />
       <BenefitsStrip />
       <ProductsSection onContact={openModal} content={variant.products} />
       <GallerySection content={variant.gallery} />
@@ -41,13 +45,17 @@ export default function LandingPage({ variant = HOME_VARIANT }: LandingPageProps
       <FinancingSection onContact={openModal} content={variant.financing} />
       <CertificationsSlider />
       <ClientsSlider />
-      <CTASection formCategories={variant.formCategories} />
+      <CTASection
+        formCategories={variant.formCategories}
+        formFixedCategory={variant.formFixedCategory}
+      />
       <LandingFooter minimal={variant.minimalChrome} />
       <ContactModal
         open={modalOpen}
         onClose={closeModal}
         title={variant.modalTitle}
         categories={variant.formCategories}
+        fixedCategory={variant.formFixedCategory}
       />
       <WhatsAppButton />
     </>

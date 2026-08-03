@@ -8,6 +8,7 @@ interface ContactModalProps {
   onClose: () => void;
   title?: string;
   categories?: string[];
+  fixedCategory?: string;
 }
 
 export default function ContactModal({
@@ -15,6 +16,7 @@ export default function ContactModal({
   onClose,
   title = "Cotice su Maquinaria CNC",
   categories,
+  fixedCategory,
 }: ContactModalProps) {
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -51,7 +53,7 @@ export default function ContactModal({
 
         {/* Form */}
         <div className="p-7">
-          <LeadForm categories={categories} />
+          <LeadForm categories={categories} fixedCategory={fixedCategory} />
         </div>
       </div>
     </div>
